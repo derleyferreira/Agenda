@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">AgendaApp</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">Entrar</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Senha</string>
+    <string name="action_sign_in">Entrar</string>
+    <string name="action_sign_in_short">Entrar</string>
+    <string name="error_invalid_email">Este e-mail é inválido</string>
+    <string name="error_invalid_password">Senha incompatível. A senha está muito curta</string>
+    <string name="error_incorrect_password">Senha Incorreta</string>
+    <string name="error_field_required">Falha na requisição</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="registrar"> Registrar </string>
+</resources>
