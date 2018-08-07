@@ -102,7 +102,7 @@ public class PessoaService extends AsyncTask<Integer, Void, Pessoas> {
 
         String loginJson = gson.toJson(login);
 
-        configuraServico(".tbpessoa");
+        configuraServico(".tbpessoa/Login");
 
         connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-type", "application/json");

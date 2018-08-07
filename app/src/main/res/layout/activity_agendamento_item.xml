@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="horizontal"
+              android:padding="8dp"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+  <ImageView
+      android:layout_width="50dp"
+      android:layout_height="59dp"
+      android:id="@+id/ageItem_Legenda"
+      app:srcCompat="@android:drawable/presence_online"
+      tools:src="@tools:sample/avatars" />
+  <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:padding="5dp"
+      android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/ageItem_Hora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="09:00"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:text="@tools:sample/date/hhmm" />
+
+    <TextView
+        android:id="@+id/ageItem_situacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Horario Disponivel"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="Horario Disponivel" />
+  </LinearLayout>
+</LinearLayout>
