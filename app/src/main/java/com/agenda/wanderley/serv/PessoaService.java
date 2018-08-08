@@ -81,7 +81,13 @@ public class PessoaService extends AsyncTask<Integer, Void, Pessoas> {
 
         connection.connect(); //envia para o servidor
 
-        String jsonDeResposta = new Scanner(connection.getInputStream()).next(); //pega resposta
+        try {
+            String jsonDeResposta = new Scanner(connection.getInputStream()).next(); //pega resposta
+        }catch (Exception erro){
+            //nada a fazer...
+        }
+
+
 
     }
 

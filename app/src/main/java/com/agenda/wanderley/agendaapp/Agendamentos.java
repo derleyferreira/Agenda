@@ -5,7 +5,7 @@ import java.util.Date;
 public class Agendamentos {
 
     private Integer ageId;
-    private long ageData;
+    private Date ageData;
     private Date ageHora;
     private Integer ageCliente;
     private Integer ageProfissional;
@@ -21,11 +21,11 @@ public class Agendamentos {
         this.ageId = ageId;
     }
 
-    public long getAgeData() {
+    public Date getAgeData() {
         return ageData;
     }
 
-    public void setAgeData(long ageData) {
+    public void setAgeData(Date ageData) {
         this.ageData = ageData;
     }
 

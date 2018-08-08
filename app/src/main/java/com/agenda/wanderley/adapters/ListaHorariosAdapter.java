@@ -99,21 +99,31 @@ public class ListaHorariosAdapter extends RecyclerView.Adapter<ListaHorariosView
 
         agendamentos = new Agendamentos();
 
-        agendamentos.setAgeData(calendarView.getDate());
         agendamentos.setAgeCliente(1);
         agendamentos.setAgeFormapgto(2);
 
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-            String h = "13:30";
-            Date d = sdf.parse(h);
-            agendamentos.setAgeHora(d);
-        } catch (ParseException e) {
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+            String s = sdf.format(new Date(calendarView.getDate()));
+
+            Date d = sdf.parse(s);
+
+            agendamentos.setAgeData(d);
+
+            SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm");
+
+            Date d2 = sdf2.parse(holder.txtHora.getText().toString());
+
+            agendamentos.setAgeHora(d2);
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
 
-        agendamentos.setAgeObservacoes("teste teste");
+        agendamentos.setAgeObservacoes("");
         agendamentos.setAgeProfissional(5);
         agendamentos.setAgeSituacao(0);
 
@@ -122,7 +132,9 @@ public class ListaHorariosAdapter extends RecyclerView.Adapter<ListaHorariosView
     private void gravaAgendamento() throws ExecutionException, InterruptedException {
 
         AgendamentoService serv = new AgendamentoService();
-        serv.cadastraAgendamento(agendamentos);
+        if (serv.cadastraAgendamento(agendamentos)){
+            Toast.makeText(context,"Agendamento realizado com sucesso.", Toast.LENGTH_LONG).show();
+        }
     }
 
 }

@@ -5,12 +5,14 @@ import android.os.AsyncTask;
 import com.agenda.wanderley.agendaapp.Agendamentos;
 import com.agenda.wanderley.agendaapp.Constantes;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.concurrent.ExecutionException;
 
@@ -28,13 +30,18 @@ public class AgendamentoService extends AsyncTask<Integer,Void,Agendamentos> {
 
         if (integers[0] == 0){
             try {
-                cadastrarAgendamento(agendamentos);
+               if  (cadastrarAgendamento(agendamentos)){
+                   return agendamentos;
+               }
             } catch (IOException e) {
-                e.printStackTrace();
+                return null;
             }
         }
-
-        return null;
+        else
+        {
+            return  null;
+        }
+        return  null;
     }
 
 
@@ -50,14 +57,14 @@ public class AgendamentoService extends AsyncTask<Integer,Void,Agendamentos> {
         connection = (HttpURLConnection) url.openConnection();
     }
 
-    private void cadastrarAgendamento(Agendamentos agendamentos) throws IOException {
+    private boolean cadastrarAgendamento(Agendamentos agendamentos) throws IOException {
         if (gson == null){
-            gson = new Gson();
+            gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
         }
 
         String pessoaJson = gson.toJson(agendamentos);
 
-        configuraServico(".tbagend");
+        configuraServico(".tbagen");
 
         connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-type", "application/json");
@@ -70,14 +77,25 @@ public class AgendamentoService extends AsyncTask<Integer,Void,Agendamentos> {
 
         connection.connect(); //envia para o servidor
 
-        String jsonDeResposta = new Scanner(connection.getInputStream()).next(); //pega resposta
+        try {
+
+            String jsonDeResposta = new Scanner(connection.getInputStream()).next(); //pega resposta
+            return  true;
+        }catch (NoSuchElementException erro)
+        {
+            return  true;
+            //sem resposta do servidor
+        }catch (Exception erro)
+        {
+            return  false;
+        }
 
 
     }
 
-    public void cadastraAgendamento(Agendamentos agendamentos) throws ExecutionException, InterruptedException {
+    public boolean cadastraAgendamento(Agendamentos agendamentos) throws ExecutionException, InterruptedException {
         this.agendamentos = agendamentos;
-        execute(0).get();
+        return  ( execute(0).get() != null);
     }
 
 
