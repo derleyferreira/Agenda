@@ -213,24 +213,25 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
-            showProgress(true);
+        /*    showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
-        }
+*/
+            PessoaService serv = new PessoaService();
+            try {
+                if (serv.efetuaLogin(email,password))
+                {
+                    carregaMenu();
+                }
+                else{
+                    Toast.makeText(this,"Login ou senha inválidos.",Toast.LENGTH_LONG).show();
+                }
+            } catch (ExecutionException e) {
+                e.printStackTrace() ;
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
-        PessoaService serv = new PessoaService();
-        try {
-            if (serv.efetuaLogin(email,password))
-            {
-                carregaMenu();
-            }
-            else{
-                Toast.makeText(this,"Login ou senha inválidos.",Toast.LENGTH_LONG).show();
-            }
-        } catch (ExecutionException e) {
-            e.printStackTrace() ;
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
 
     }

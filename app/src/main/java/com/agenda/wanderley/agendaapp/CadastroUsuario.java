@@ -37,6 +37,10 @@ public class CadastroUsuario extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+
+                    if (!validaCadastro())
+                        return;
+
                     cadastrar();
                     finish();
                 } catch (InterruptedException e) {
@@ -51,6 +55,46 @@ public class CadastroUsuario extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    private boolean validaCadastro(){
+
+        if (edtNome.getText().toString().isEmpty()){
+            edtNome.setError(getString(R.string.infome_nome));
+            return false;
+        }
+
+        if (edtNome.length() < 4){
+            edtNome.setError(getString(R.string.nome_curto));
+            return false;
+        }
+
+        if (edtTelefone.getText().toString().isEmpty()){
+            edtTelefone.setError(getString(R.string.informe_telefone));
+            return false;
+        }
+
+        if (edtTelefone.getText().length() < 10){
+            edtTelefone.setError(getString(R.string.telefone_invalido));
+            return false;
+        }
+
+        if (edtSenha.getText().toString().isEmpty()){
+            edtSenha.setError(getString(R.string.error_invalid_password));
+            return false;
+        }
+
+        if (edtSenha.getText().length() < 4){
+           edtSenha.setError(getString(R.string.senha_muito_curta));
+           return false;
+        }
+
+        if (!edtSenha.getText().equals(edtConfSenha.getText())){
+            edtConfSenha.setError(getString(R.string.senhas_nao_conferem));
+            return false;
+        }
+        return true;
 
     }
 
