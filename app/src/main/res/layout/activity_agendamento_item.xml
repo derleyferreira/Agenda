@@ -8,9 +8,9 @@
               android:layout_height="wrap_content">
 
   <ImageView
-      android:layout_width="50dp"
-      android:layout_height="59dp"
       android:id="@+id/ageItem_Legenda"
+      android:layout_width="19dp"
+      android:layout_height="58dp"
       app:srcCompat="@android:drawable/presence_online"
       tools:src="@tools:sample/avatars" />
   <LinearLayout
@@ -25,8 +25,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="09:00"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="18sp"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="14sp"
         android:textStyle="bold"
         tools:text="@tools:sample/date/hhmm" />
 
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:text="Horario Disponivel"
         android:textAllCaps="false"
-        android:textSize="20sp"
+        android:textSize="12sp"
         android:textStyle="bold"
         tools:text="Horario Disponivel" />
   </LinearLayout>

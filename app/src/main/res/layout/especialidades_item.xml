@@ -17,19 +17,19 @@
             android:layout_height="208dp"
 
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_menu_camera"
-            tools:src="@drawable/ic_menu_camera" />
+            android:src="@drawable/indepa"
+            tools:src="@drawable/indepa" />
 
         <TextView
+            android:id="@+id/especialidadeitem_Titulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/especialidadeitem_Titulo"
 
             android:maxLines="3"
             android:padding="8dp"
             android:text="Estadio Independência"
             android:textColor="#222"
-            android:textSize="22sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <TextView

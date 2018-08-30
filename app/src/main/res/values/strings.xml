@@ -20,8 +20,16 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+    <string name="nome_curto"> Nome muito curto </string>
+    <string name="infome_nome"> Informe seu nome</string>
+    <string name="informe_telefone"> Informe o telefone</string>
+    <string name="telefone_invalido">Telefone inválido</string>
+    <string name="senha_muito_curta">Senha muito curta</string>
+
     <string name="registrar"> Registrar </string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="senhas_nao_conferem">Senhas não conferem</string>
 </resources>
