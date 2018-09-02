@@ -34,10 +34,10 @@
         android:id="@+id/ageItem_situacao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Horario Disponivel"
+        android:text="Horário Disponível"
         android:textAllCaps="false"
         android:textSize="12sp"
         android:textStyle="bold"
-        tools:text="Horario Disponivel" />
+        tools:text="Horário Disponível" />
   </LinearLayout>
 </LinearLayout>

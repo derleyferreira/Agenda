@@ -6,10 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".Agendamento">
 
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Clique no Horario Disponivel para Agendar"
+        app:layout_constraintBottom_toTopOf="@+id/agendamento_ListaHorarios"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/agendamento_calendario"
+        app:layout_constraintVertical_bias="0.411" />
+
     <CalendarView
         android:id="@+id/agendamento_calendario"
-        android:layout_width="383dp"
-        android:layout_height="303dp"
+        android:layout_width="379dp"
+        android:layout_height="304dp"
         app:layout_constraintBottom_toTopOf="@+id/agendamento_ListaHorarios"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,13 +35,14 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/agendamento_ListaHorarios"
-        android:layout_width="348dp"
-        android:layout_height="288dp"
+        android:layout_width="349dp"
+        android:layout_height="261dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
+        android:paddingBottom="0dp"
         android:scrollbars="vertical"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
