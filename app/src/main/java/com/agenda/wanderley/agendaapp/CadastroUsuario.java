@@ -90,10 +90,11 @@ public class CadastroUsuario extends AppCompatActivity {
            return false;
         }
 
-        if (!edtSenha.getText().equals(edtConfSenha.getText())){
+        if (edtSenha.getText().toString() != edtConfSenha.getText().toString()){
             edtConfSenha.setError(getString(R.string.senhas_nao_conferem));
             return false;
         }
+        
         return true;
 
     }
