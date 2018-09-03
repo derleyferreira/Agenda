@@ -50,7 +50,7 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:counterMaxLength="8"
+                app:counterMaxLength="10"
                 app:passwordToggleEnabled="true">
 
                 <EditText
