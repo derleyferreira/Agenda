@@ -137,7 +137,7 @@ public class PessoaService extends AsyncTask<Integer, Void, Pessoas> {
         return  p;
     }
 
-    public boolean efetuaLogin(String pEmail, String pSenha) throws ExecutionException, InterruptedException {
+    public Pessoas efetuaLogin(String pEmail, String pSenha) throws ExecutionException, InterruptedException {
 
         this.loginEmail  = pEmail;
         this.loginSenha = pSenha;
@@ -149,13 +149,8 @@ public class PessoaService extends AsyncTask<Integer, Void, Pessoas> {
 
         Pessoas p = execute(1).get();
 
-        if (p == null){
-            return  false;
-        }
-        else
-        {
-            return  true;
-        }
+        return  p;
+
     }
 
 }

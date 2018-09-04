@@ -219,8 +219,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 */
             PessoaService serv = new PessoaService();
             try {
-                if (serv.efetuaLogin(email,password))
+                Pessoas p = serv.efetuaLogin(email,password);
+                if (p != null)
                 {
+
+                    Global.configuraUsuarioLogado(p);
+
                     carregaMenu();
                 }
                 else{

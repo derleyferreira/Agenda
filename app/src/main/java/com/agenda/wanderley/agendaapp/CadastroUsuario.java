@@ -85,16 +85,20 @@ public class CadastroUsuario extends AppCompatActivity {
             return false;
         }
 
-        if (edtSenha.getText().length() < 4){
+        if (edtSenha.getText().length() < 5){
            edtSenha.setError(getString(R.string.senha_muito_curta));
            return false;
         }
 
-        if (edtSenha.getText().toString() != edtConfSenha.getText().toString()){
+        String s1,s2;
+        s1 = edtSenha.getText().toString();
+        s2 = edtConfSenha.getText().toString();
+
+        if (!s1.equals(s2)) {
             edtConfSenha.setError(getString(R.string.senhas_nao_conferem));
             return false;
         }
-        
+
         return true;
 
     }
