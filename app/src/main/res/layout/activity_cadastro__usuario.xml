@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/registro_txtnome"
             android:hint="Nome"
-            android:inputType="text" />
+            android:inputType="text"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -171,7 +171,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="32dp"
-        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:background="@drawable/botao_redondo"
         android:text="Cadastrar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
