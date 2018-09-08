@@ -56,7 +56,10 @@
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:drawableStart="@drawable/ic_mail"
+                    android:drawableLeft="@drawable/ic_mail"
+                    android:drawablePadding="@dimen/activity_vertical_margin"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -76,7 +79,10 @@
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:drawableStart="@drawable/ic_senha"
+                    android:drawableLeft="@drawable/ic_senha"
+                    android:drawablePadding="@dimen/activity_vertical_margin"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -95,7 +101,7 @@
                     android:background="@drawable/botao_redondo"
                     android:text="@string/action_sign_in"
                     android:textColor="@android:color/white"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
 
                 <Button
                     android:id="@+id/login_registrar"

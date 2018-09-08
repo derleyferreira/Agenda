@@ -27,7 +27,7 @@
     <string name="telefone_invalido">Telefone inválido</string>
     <string name="senha_muito_curta">Senha muito curta</string>
 
-    <string name="registrar"> Registrar </string>
+    <string name="registrar">Criar uma Conta </string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

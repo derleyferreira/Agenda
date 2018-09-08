@@ -20,8 +20,7 @@
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.44" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/textInputLayout2"
@@ -43,7 +42,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/registro_txtnome"
             android:hint="Nome"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:drawableStart="@drawable/ic_usuario"
+            android:drawablePadding="@dimen/activity_vertical_margin"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -66,7 +67,10 @@
             android:layout_height="wrap_content"
             android:hint="Telefone"
             android:id="@+id/registro_txttelefone"
-            android:inputType="phone" />
+            android:inputType="phone"
+            android:drawableStart="@drawable/ic_fone"
+            android:drawablePadding="@dimen/activity_vertical_margin"
+            android:drawableLeft="@drawable/ic_fone" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -89,7 +93,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="E-Mail"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:drawableStart="@drawable/ic_mail"
+            android:drawablePadding="@dimen/activity_vertical_margin"
+            android:drawableLeft="@drawable/ic_mail" />
     </android.support.design.widget.TextInputLayout>
 
     <View
@@ -106,7 +113,6 @@
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
 
@@ -133,7 +139,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Senha"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:drawableStart="@drawable/ic_senha"
+            android:drawablePadding="@dimen/activity_vertical_margin"
+            android:drawableLeft="@drawable/ic_senha" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -159,7 +168,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Confirmar Senha"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:drawableStart="@drawable/ic_senha"
+            android:drawablePadding="@dimen/activity_vertical_margin"
+            android:drawableLeft="@drawable/ic_senha" />
     </android.support.design.widget.TextInputLayout>
 
     <Button

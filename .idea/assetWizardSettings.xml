@@ -23,7 +23,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/E:/Programas/Android%20Studio/android-studio-ide-181.4884283-windows/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_account_box_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/E:/Programas/Android%20Studio/android-studio-ide-181.4884283-windows/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/communication/ic_phone_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -33,7 +33,8 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="ic_usuario" />
+                                      <entry key="outputName" value="ic_fone" />
+                                      <entry key="themeColor" value="e57227" />
                                     </map>
                                   </option>
                                 </PersistentState>
