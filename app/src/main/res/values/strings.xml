@@ -32,4 +32,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="senhas_nao_conferem">Senhas não conferem</string>
+    <string name="informe_email">Informe o e-mail</string>
+    <string name="email_ja_cadastrado">e-mail já cadastrado</string>
+    <string name="falha_ao_conectar_servidor">Falha ao conectar com o servidor</string>
 </resources>

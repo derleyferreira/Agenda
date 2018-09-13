@@ -9,10 +9,17 @@ import android.widget.CalendarView;
 
 import com.agenda.wanderley.adapters.ListaHorariosAdapter;
 
+import java.sql.Time;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 public class Agendamento extends AppCompatActivity {
 
     private RecyclerView listaHorarios;
     private CalendarView calendarView;
+
+    private List<Time> horariosAgendados = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +40,15 @@ public class Agendamento extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 adapter.setCalendarView(calendarView);
+
+
+
             }
         });
+
+    }
+
+    private void carregaAgendamentosNaData(Date data){
 
     }
 

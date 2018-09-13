@@ -12,6 +12,9 @@ import java.io.PrintStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.concurrent.ExecutionException;
@@ -64,7 +67,7 @@ public class AgendamentoService extends AsyncTask<Integer,Void,Agendamentos> {
 
         String pessoaJson = gson.toJson(agendamentos);
 
-        configuraServico(".tbagen");
+        configuraServico(".tbagendamento");
 
         connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-type", "application/json");
@@ -89,9 +92,40 @@ public class AgendamentoService extends AsyncTask<Integer,Void,Agendamentos> {
         {
             return  false;
         }
+    }
 
+    private List<Agendamentos> carregaAgendamentos(Date data) throws IOException {
+
+        configuraServico(".tbagendamento" + "/"+data) ;
+
+        connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("GET");
+        connection.setRequestProperty("Content-type", "application/json");
+        connection.setRequestProperty("Accept", "application/json");
+        connection.setDoOutput(true);
+        connection.setConnectTimeout(5000);
+
+        connection.connect();
+
+        Scanner scanner = new Scanner(url.openStream());
+        StringBuilder resposta = new StringBuilder();
+
+        while(scanner.hasNext()){
+            resposta.append(scanner.next());
+        }
+
+        if (resposta.length() > 0){
+
+            Agendamentos[] lista = new Gson().fromJson(resposta.toString(),Agendamentos[].class);
+
+            return Arrays.asList(lista);
+        }
+        else{
+            return  null;
+        }
 
     }
+
 
     public boolean cadastraAgendamento(Agendamentos agendamentos) throws ExecutionException, InterruptedException {
         this.agendamentos = agendamentos;

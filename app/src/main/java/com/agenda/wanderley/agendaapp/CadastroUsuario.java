@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.agenda.wanderley.serv.PessoaService;
 
@@ -58,6 +59,18 @@ public class CadastroUsuario extends AppCompatActivity {
 
     }
 
+    private boolean isEmailValid(String email) {
+        //TODO: Replace this with your own logic
+
+        boolean retorno;
+
+        retorno = (email.contains("@")) &&
+                (email.length() > 3);
+
+        return retorno;
+    }
+
+
     private boolean validaCadastro(){
 
         if (edtNome.getText().toString().isEmpty()){
@@ -72,6 +85,29 @@ public class CadastroUsuario extends AppCompatActivity {
 
         if (edtTelefone.getText().toString().isEmpty()){
             edtTelefone.setError(getString(R.string.informe_telefone));
+            return false;
+        }
+
+        if (edtEmail.getText().toString().isEmpty()){
+            edtEmail.setError(getString(R.string.informe_email));
+            return false;
+        }
+
+        if (!isEmailValid(edtEmail.getText().toString())){
+            edtEmail.setError(getString(R.string.error_invalid_email));
+            return false;
+        }
+
+        try {
+            if (usuarioJaCadastrado(edtEmail.getText().toString())){
+                edtEmail.setError(getString( R.string.email_ja_cadastrado));
+                return false;
+            }
+        } catch (ExecutionException e) {
+            Toast.makeText(this,getString(R.string.falha_ao_conectar_servidor),Toast.LENGTH_LONG).show();
+            return false;
+        } catch (InterruptedException e) {
+            Toast.makeText(this,getString(R.string.falha_ao_conectar_servidor),Toast.LENGTH_LONG).show();
             return false;
         }
 
@@ -101,6 +137,12 @@ public class CadastroUsuario extends AppCompatActivity {
 
         return true;
 
+    }
+
+    private boolean usuarioJaCadastrado(String pEmail) throws ExecutionException, InterruptedException {
+
+        PessoaService service = new PessoaService();
+        return service.pessoaJaCadastrada(pEmail);
     }
 
     private void carregaComponenets(){

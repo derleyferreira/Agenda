@@ -47,6 +47,13 @@ public class PessoaService extends AsyncTask<Integer, Void, Pessoas> {
                 return  null;
             }
         }
+        else if(integers[0] ==2){
+            try {
+                return loginJaCadastrado(loginEmail);
+            } catch (IOException e) {
+                return  null;
+            }
+        }
         else {
             return  null;
         }
@@ -58,6 +65,55 @@ public class PessoaService extends AsyncTask<Integer, Void, Pessoas> {
         url = new URL(Constantes.URL + servico) ;
         connection = (HttpURLConnection) url.openConnection();
 
+    }
+
+    private Pessoas loginJaCadastrado(String pEmail) throws IOException {
+
+        if (gson == null){
+            gson = new Gson();
+        }
+
+        Login l = new Login();
+        l.setLogin(pEmail);
+        l.setSenha("");
+
+        String loginJson = gson.toJson(l, Login.class);
+
+        configuraServico(".tbpessoa/login");
+
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("Content-type", "application/json");
+        connection.setRequestProperty("Accept", "application/json");
+        connection.setDoOutput(true);
+        connection.setConnectTimeout(5000);
+
+        PrintStream printStream = new PrintStream(connection.getOutputStream());
+        printStream.println(loginJson); //seta o que voce vai enviar
+
+        connection.connect(); //envia para o servidor
+        String jsonDeResposta = "";
+
+        try {
+            jsonDeResposta = new Scanner(connection.getInputStream()).next(); //pega resposta
+        }catch (Exception e){
+            String teste = e.getMessage();
+        }
+
+        Pessoas p = null;
+        if (!jsonDeResposta.isEmpty()) {
+            p = gson.fromJson(jsonDeResposta, Pessoas.class);
+        }
+
+        String abc = jsonDeResposta;
+
+        return  p;
+
+    }
+
+    public boolean pessoaJaCadastrada(String pEmail) throws ExecutionException, InterruptedException {
+
+
+        return efetuaLogin(pEmail, "") != null;
 
     }
 
