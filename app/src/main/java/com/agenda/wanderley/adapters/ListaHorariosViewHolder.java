@@ -3,6 +3,7 @@ package com.agenda.wanderley.adapters;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,6 +15,8 @@ public class ListaHorariosViewHolder extends RecyclerView.ViewHolder
 implements View.OnClickListener{
 
     public TextView txtHora;
+    public TextView txtSituacao;
+    public ImageView imgLegenda;
 
 
     private ItemClickListener itemClickListener;
@@ -22,6 +25,8 @@ implements View.OnClickListener{
         super(itemView);
 
         txtHora = itemView.findViewById(R.id.ageItem_Hora);
+        txtSituacao = itemView.findViewById(R.id.ageItem_situacao);
+        imgLegenda = itemView.findViewById(R.id.ageItem_Legenda);
         itemView.setOnClickListener(this);
 
     }

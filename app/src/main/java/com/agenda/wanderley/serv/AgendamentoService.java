@@ -2,6 +2,7 @@ package com.agenda.wanderley.serv;
 
 import android.os.AsyncTask;
 
+import com.agenda.wanderley.agendaapp.Agendamento;
 import com.agenda.wanderley.agendaapp.Agendamentos;
 import com.agenda.wanderley.agendaapp.Constantes;
 import com.google.gson.Gson;
@@ -10,9 +11,10 @@ import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -20,24 +22,34 @@ import java.util.Scanner;
 import java.util.concurrent.ExecutionException;
 
 
-public class AgendamentoService extends AsyncTask<Integer,Void,Agendamentos> {
+public class AgendamentoService extends AsyncTask<Integer,Void,List<Agendamentos>> {
 
     private URL url;
     private HttpURLConnection connection;
     private Gson gson;
     private Agendamentos agendamentos;
 
+    private Calendar dataPesquisa;
 
     @Override
-    protected Agendamentos doInBackground(Integer... integers) {
+    protected List<Agendamentos> doInBackground(Integer... integers) {
 
         if (integers[0] == 0){
             try {
                if  (cadastrarAgendamento(agendamentos)){
-                   return agendamentos;
+                   List<Agendamentos> retorno = new ArrayList<>();
+                   retorno.add(agendamentos);
+                   return retorno;
                }
             } catch (IOException e) {
                 return null;
+            }
+        }
+        else if (integers[0] == 1){
+            try {
+                return carregaAgendamentos(dataPesquisa);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
         else
@@ -94,9 +106,16 @@ public class AgendamentoService extends AsyncTask<Integer,Void,Agendamentos> {
         }
     }
 
-    private List<Agendamentos> carregaAgendamentos(Date data) throws IOException {
+    private List<Agendamentos> carregaAgendamentos(Calendar c) throws IOException {
 
-        configuraServico(".tbagendamento" + "/"+data) ;
+
+        int ano, mes,dia;
+
+        ano = c.get(c.YEAR);
+        mes = c.get(c.MONTH);
+        dia = c.get(c.DATE);
+
+        configuraServico(".tbagendamento/pordata" + "/"+ano+"/"+mes+"/"+dia) ;
 
         connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
@@ -114,7 +133,7 @@ public class AgendamentoService extends AsyncTask<Integer,Void,Agendamentos> {
             resposta.append(scanner.next());
         }
 
-        if (resposta.length() > 0){
+        if (resposta.length() > 2){
 
             Agendamentos[] lista = new Gson().fromJson(resposta.toString(),Agendamentos[].class);
 
@@ -124,6 +143,11 @@ public class AgendamentoService extends AsyncTask<Integer,Void,Agendamentos> {
             return  null;
         }
 
+    }
+
+    public List<Agendamentos> retornaListaAgendamentos(Calendar c) throws ExecutionException, InterruptedException {
+        dataPesquisa = c;
+        return execute(1).get();
     }
 
 

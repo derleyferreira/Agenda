@@ -1,6 +1,8 @@
 package com.agenda.wanderley.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,14 +12,18 @@ import android.widget.CalendarView;
 import android.widget.Toast;
 
 import com.agenda.wanderley.agendaapp.Agendamentos;
+import com.agenda.wanderley.agendaapp.Global;
 import com.agenda.wanderley.agendaapp.R;
 import com.agenda.wanderley.interfaces.ItemClickListener;
 import com.agenda.wanderley.serv.AgendamentoService;
 
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -27,8 +33,15 @@ public class ListaHorariosAdapter extends RecyclerView.Adapter<ListaHorariosView
 
     List<String> horarios = new ArrayList<>();
 
-    public void setCalendarView(CalendarView calendarView) {
+    private Calendar calendario;
+
+    public void setCalendarView(CalendarView calendarView, int ano, int mes, int dia) {
         this.calendarView = calendarView;
+
+        calendario = GregorianCalendar.getInstance();
+
+        calendario.set(ano, mes, dia);
+
     }
 
     private CalendarView calendarView;
@@ -60,14 +73,27 @@ public class ListaHorariosAdapter extends RecyclerView.Adapter<ListaHorariosView
             @Override
             public void OnClick(View view, int position, boolean isLongClick) {
 
-                //após confirmação
-                populaAgendamento(holder);
-                try {
-                    gravaAgendamento();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                String situacao = context.getString(R.string.situacao_disponivel);
+
+                if (holder.txtSituacao.getText().toString().equals(situacao)) {
+                    //após confirmação
+                    populaAgendamento(holder);
+                    try {
+                        gravaAgendamento();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    holder.txtSituacao.setText(R.string.seu_agendamento);
+                    holder.txtSituacao.setTextColor(Color.BLUE);
+                    holder.txtSituacao.setTypeface(null, Typeface.BOLD);
+                    holder.imgLegenda.setImageResource(android.R.drawable.presence_online);
+                }
+                else{
+
+                    Toast.makeText(context,R.string.error_valid_horario_indisponivel,Toast.LENGTH_LONG).show();
+
                 }
 
             }
@@ -99,20 +125,22 @@ public class ListaHorariosAdapter extends RecyclerView.Adapter<ListaHorariosView
 
         agendamentos = new Agendamentos();
 
-        agendamentos.setAgeCliente(1);
+        agendamentos.setAgeCliente(Global.usuarioLogado.getPesId());
         agendamentos.setAgeFormapgto(2);
 
         try {
 
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-            String s = sdf.format(new Date(calendarView.getDate()));
+
+            String s = sdf.format(calendario.getTime());
+
 
             Date d = sdf.parse(s);
 
             agendamentos.setAgeData(d);
 
-            SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm");
+            SimpleDateFormat sdf2 = new SimpleDateFormat("hh:mm");
 
             Date d2 = sdf2.parse(holder.txtHora.getText().toString());
 

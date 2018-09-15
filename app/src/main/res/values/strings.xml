@@ -35,4 +35,8 @@
     <string name="informe_email">Informe o e-mail</string>
     <string name="email_ja_cadastrado">e-mail já cadastrado</string>
     <string name="falha_ao_conectar_servidor">Falha ao conectar com o servidor</string>
+    <string name="situacao_indiposnivel">Indisponível</string>
+    <string name="situacao_disponivel">Disponível</string>
+    <string name="error_valid_horario_indisponivel">Horário Indisponível.</string>
+    <string name="seu_agendamento">Seu agendamento</string>
 </resources>

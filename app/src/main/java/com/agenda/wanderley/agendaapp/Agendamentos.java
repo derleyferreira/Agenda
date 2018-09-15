@@ -1,5 +1,6 @@
 package com.agenda.wanderley.agendaapp;
 
+import java.sql.Time;
 import java.util.Date;
 
 public class Agendamentos {
