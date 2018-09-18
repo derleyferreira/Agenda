@@ -39,4 +39,7 @@
     <string name="situacao_disponivel">Disponível</string>
     <string name="error_valid_horario_indisponivel">Horário Indisponível.</string>
     <string name="seu_agendamento">Seu agendamento</string>
+    <string name="especialidade">Especialidade</string>
+    <string name="_13_09_2018">13/09/2018</string>
+    <string name="profissional">Profissional</string>
 </resources>
